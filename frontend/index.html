@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,70 @@
     <script type="module" src="./assets/js/ui.js"></script>
 
 </head>
+
 <body>
-    
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 g-0">
+                <header class="sidebar-header py-5 px-3">
+                    <figure class="logo">
+                        <a href="/">
+                            <img src="./assets/img/IMS-Logo.png" alt="IMS Logo" class="img-fluid">
+                        </a>
+                    </figure>
+                    <nav class="left-sidebar-nav">
+                        <ul>
+                            <a href="#">
+                                <li><i class="fa-solid fa-gauge"></i> Dashboard</li>
+                            </a>
+                            <a href="#">
+                                <li><i class="fa-regular fa-file"></i> Products</li>
+                            </a>
+                            <a href="#">
+                                <li><i class="fa-solid fa-table-columns"></i> Categories</li>
+                            </a>
+                            <a href="#">
+                                <li><i class="fa-regular fa-rectangle-list"></i> Orders</li>
+                            </a>
+                            <a href="#">
+                                <li><i class="fa-regular fa-circle-check"></i> Purchases</li>
+                            </a>
+                            <a href="#">
+                                <li><i class="fa-solid fa-user-plus"></i> Suppliers</li>
+                            </a>
+                            <a href="#">
+                                <li><i class="fa-solid fa-users"></i> Customers</li>
+                            </a>
+                            <a class="log-out" href="#">
+                                <li><i class="fa-solid fa-right-from-bracket"></i> Log Out</li>
+                            </a>
+
+                        </ul>
+                    </nav>
+
+                </header>
+            </div>
+            <div class="col-md-9">
+                <main>
+                    <header class="top-right-header py-5">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2>Dashboard</h2>
+                            <div class="search-bar">
+                                <form action="">
+                                    <i class="fa-solid fa-magnifying-glass"></i> 
+                                    <label for="header-search"></label>
+                                    <input type="search" id="header-search" placeholder="Search Here">
+                                </form>
+                            </div>
+                        </div>
+                    </header>
+                </main>
+            </div>
+        </div>
+    </div>
+
+
 </body>
+
 </html>

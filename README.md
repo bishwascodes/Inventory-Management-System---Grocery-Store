@@ -1,7 +1,11 @@
 # Inventory Management System for Grocery Store
-This final project for the Introduction to Web Development class will be a web-based application designed to help grocery store owners, managers, and employees efficiently track and manage their stock of products. The system will allow users to add, update, remove, and monitor inventory levels in real-time while showing alerts for low stock, expired products, and displaying restocking recommendations as well. 
-HTML, CSS and JS will be used in the frontend and a simple C#(asp.net) api will be used to get the data from the backend. The data will be persisted in a simple .json file. 
-This project is exciting because it involves real-world problem-solving, API development, real-time data handling, and UI/UX design. Additionally, it allows me to apply my knowledge of frontend development, asynchronous programming, api integration, and modular JavaScript while creating a functional, scalable product.
+For the final project of the class Intro to Web Dev, I'll be working on building an Inventory Management system with very basic POS system for grocery store.
+
+This Inverntory Management System will provide users with the features to add, update, remove and view items/products for a grocery store and the store admin will be able to view the products with low stock and expiry product date as well which will make them aware of their product inventory and can make re-purchase decisions.
+
+Talking about the technology, HTML, CSS and JS will be used in the frontend and a simple C#(asp.net) api will be used to get the data from the backend. The data will be persisted in a simple .json file. Bootstrap will be used for making the styling more convenient.
+
+This is a medium sized project where I'll be applying my knowledge of frontend development, api integration, and basic api creation.
 
 # Features and Functionalities
 ## Core Features (Meeting Final Project Requirements)

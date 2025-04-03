@@ -8,6 +8,45 @@
     --white-light : #f7fafc;
     --secondary: #142e14;
     --dark: #232323;
-    --accent: #218af0;
+    --accent: #2188f0;
     --accent-light: #2065aa;
+}
+
+body{
+    font-family: "Poppins", system-ui;
+}
+/* Header */
+.sidebar-header {
+    background: var(--secondary);
+    a{
+        color: var(--white);
+        text-decoration: none;
+        display: block;
+        padding: 0.7rem 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        line-height: 2rem;
+        transition: 0.5s ease-in-out all;
+        li{
+            list-style: none;
+            display: flex;
+            align-content: center;
+            i{
+                font-size: 2rem;
+                width: 3rem;
+                padding-right: 0.4rem;
+            }
+        }
+        &:not(.logo a):hover{
+            background: var(--accent);
+            border-radius: 0.6rem;
+        }
+    }
+    a.log-out{
+        padding-top:2rem;
+        border-top: 2px solid var(--white);
+    }
+}
+.top-right-header{
+    background: var(--white-light);
 }
