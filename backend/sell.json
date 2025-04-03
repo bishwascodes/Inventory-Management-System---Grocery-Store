@@ -1,0 +1,16 @@
+[
+    {
+        "Id": "S1",
+        "ProductId": "2",
+        "QuantitySold": 5,
+        "SellDate": "2025-03-15",
+        "Buyer": "Buyer1"
+    },
+    {
+        "Id": "S2",
+        "ProductId": " 4",
+        "QuantitySold": 2,
+        "SellDate": "2025-03-15",
+        "Buyer": "Buyer2"
+    }
+]

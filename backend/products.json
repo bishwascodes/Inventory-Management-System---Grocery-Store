@@ -1,0 +1,57 @@
+[
+    {
+        "Id": "1",
+        "Name": "Milk",
+        "Category": "Dairy",
+        "Quantity": 10,
+        "Unit": "Litre",
+        "SellingPrice": 2.50,
+        "PurchasePrice": 2.00,
+        "ExpiryDate": "2025-06-10",
+        "Supplier": "DairyFarm Inc."
+    },
+    {
+        "Id": "2",
+        "Name": "Eggs",
+        "Category": "Poultry",
+        "Quantity": 30,
+        "Unit": "Dozen",
+        "SellingPrice": 3.75,
+        "PurchasePrice": 3.00,
+        "ExpiryDate": "2025-04-25",
+        "Supplier": "FreshEggs Co."
+    },
+    {
+        "Id": "3",
+        "Name": "Apples",
+        "Category": "Fruits",
+        "Quantity": 50,
+        "Unit": "Kg",
+        "SellingPrice": 1.80,
+        "PurchasePrice": 1.20,
+        "ExpiryDate": "2025-05-15",
+        "Supplier": "Utah Fruits LLC."
+    },
+    {
+        "Id": "4",
+        "Name": "Chicken Breast",
+        "Category": "Meat",
+        "Quantity": 20,
+        "Unit": "Kg",
+        "SellingPrice": 6.50,
+        "PurchasePrice": 5.20,
+        "ExpiryDate": "2025-04-18",
+        "Supplier": "Christinsen's Meat"
+    },
+    {
+        "Id": "5",
+        "Name": "Rice",
+        "Category": "Grains",
+        "Quantity": 100,
+        "Unit": "Kg",
+        "SellingPrice": 1.20,
+        "PurchasePrice": 0.90,
+        "ExpiryDate": "2026-12-01",
+        "Supplier": "Sanpete Grains Co."
+    }
+]

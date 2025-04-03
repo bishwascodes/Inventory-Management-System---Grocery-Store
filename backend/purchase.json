@@ -1,0 +1,16 @@
+[
+    {
+        "Id": "1",
+        "ProductId": "1",
+        "QuantityPurchased": 20,
+        "PurchaseDate": "2025-03-20",
+        "Supplier": "DairyFarm Inc."
+    },
+    {
+        "Id": "2",
+        "ProductId": "5",
+        "QuantityPurchased": 10,
+        "PurchaseDate": "2025-03-20",
+        "Supplier": "Sanpete Grains Co."
+    }
+]
