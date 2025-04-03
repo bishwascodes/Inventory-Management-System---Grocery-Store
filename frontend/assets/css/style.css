@@ -1,0 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --white : #fff;
+    --white-light : #f7fafc;
+    --secondary: #142e14;
+    --dark: #232323;
+    --accent: #218af0;
+    --accent-light: #2065aa;
+}
