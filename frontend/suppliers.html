@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purchases - Inventory Management System</title>
+    <title>Suppliers - Inventory Management System</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Js -->
-    <script type="module" src="./assets/js/ui/purchases-ui.js"></script>
+    <script type="module" src="./assets/js/ui/suppliers-ui.js"></script>
 
 </head>
 
@@ -45,10 +45,10 @@
                             <a href="./sales.html">
                                 <li><i class="fa-regular fa-rectangle-list"></i> Sales</li>
                             </a>
-                            <a href="./purchases.html" class="active">
+                            <a href="./purchases.html">
                                 <li><i class="fa-regular fa-circle-check"></i> Purchases</li>
                             </a>
-                            <a href="./suppliers.html">
+                            <a href="./suppliers.html" class="active">
                                 <li><i class="fa-solid fa-user-plus"></i> Suppliers</li>
                             </a>
                             <a href="./customers.html">
@@ -67,7 +67,7 @@
                 <main>
                     <header class="d-flex justify-content-between align-items-center top-right-header py-5">
                         <div class="ps-5">
-                            <h2>Purchases</h2>
+                            <h2>Suppliers</h2>
                         </div>
                         <div class="user-account">
                             <div class="d-flex align-items-center gap-3 pe-5">
@@ -83,75 +83,84 @@
                     <div class="content pt-5 px-5">
                         <div class="title-and-breadcrumbs d-flex justify-content-between">
                             <div class="title">
-                                All Purchases
+                                All Suppliers
                             </div>
                             <div class="breadcrumb">
-                                Dashboard <i class="fa-solid fa-chevron-right"></i> <span>Purchases</span>
+                                Dashboard <i class="fa-solid fa-chevron-right"></i> <span>Suppliers</span>
                             </div>
                         </div>
-                        <section class="purchases-section bg-secondary py-5 px-3">
-                            <div class="purchase-container">
-                                <div class="purchase-top-section d-flex justify-content-between align-items-center">
-                                    <form action="" id="purchase-search-form">
+                        <section class="products-section bg-secondary py-5 px-3">
+                            <div class="product-container">
+                                <div class="product-top-section d-flex justify-content-between align-items-center">
+                                    <form action="" id="product-search-form">
                                         <label for="search">Search</label>
                                         <input type="search" name="s" id="search" placeholder="Search..">
                                     </form>
                                     <div class="right">
                                         <a href="#" class="btn btn-secondary"><i class="fa-solid fa-chart-simple"></i>
                                             Filter</a>
-                                        <a href="./add-purchase.html" class="btn btn-primary"><i
+                                        <a href="./add-supplier.html" class="btn btn-primary"><i
                                                 class="fa-solid fa-plus"></i> Add New</a>
                                     </div>
                                 </div>
 
-                                <div id="purchases-inner" class="pt-5">
+                                <div id="suppliers-inner" class="pt-5">
                                     <div class="item-header d-flex">
-                                        <div class="id w-20">
-                                            <p>purchase ID</p>
+                                        <div class="supplier-id w-10">
+                                            <p>Supplier ID</p>
                                         </div>
-                                        <div class="title w-20">
-                                            <p>Product Title</p>
+                                        <div class="supplier-name w-10">
+                                            <p>Supplier Name</p>
                                         </div>
-                                        <div class="quantity w-20">
-                                            <p>Quantity</p>
+                                        <div class="contact-person w-10">
+                                            <p>Contact Person</p>
                                         </div>
-                                        <div class="date w-20">
-                                            <p>purchase Date</p>
+                                        <div class="phone w-10">
+                                            <p>Phone</p>
                                         </div>
-                                        <div class="buyer w-20">
-                                            <p>Buyer</p>
+                                        <div class="email w-20">
+                                            <p>Email</p>
+                                        </div>
+                                        <div class="address w-20">
+                                            <p>Address</p>
+                                        </div>
+                                        <div class="join-date w-10">
+                                            <p>Join Date</p>
                                         </div>
                                         <div class="action w-20">
                                             <p>Action</p>
                                         </div>
                                     </div>
-                                    <div id="purchase-row-container">
-                                        <div class="purchase-item d-flex">
-                                            <div class="id">
-                                                <p>123</p>
+                                    <div id="supplier-row-container">
+                                        <div class="supplier-item d-flex">
+                                            <div class="supplier-id w-10">
+                                                <p>101</p>
                                             </div>
-                                            <div class="title">
-                                                <p>Milk</p>
+                                            <div class="supplier-name w-10">
+                                                <p>Bishwas Thapa</p>
                                             </div>
-                                            <div class="quantity">
-                                                <p>2L</p>
+                                            <div class="contact-person w-10">
+                                                <p>Contact Person</p>
                                             </div>
-                                            <div class="date">
-                                                <p>12-20-2025</p>
+                                            <div class="phone w-10">
+                                                <p>986888888</p>
                                             </div>
-                                            <div class="buyer">
-                                                <p>Bishwas</p>
+                                            <div class="email w-20">
+                                                <p>hey.ahas@gmail.com</p>
                                             </div>
-                                            <div class="action">
-                                                <p>Action</p>
+                                            <div class="address w-20">
+                                                <p>123 Fake Stree, UT, USA</p>
                                             </div>
-                                            <div class="action">
+                                            <div class="join-date w-10">
+                                                <p>12-02-2024</p>
+                                            </div>
+                                            <div class="action w-20">
                                                 <a href="#"><i class="fa-solid fa-eye"></i></a>
                                                 <a href="#"><i class="fa-solid fa-pencil"></i></a>
                                                 <a href="#"><i class="fa-solid fa-trash"></i></a>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
 
                                 </div>

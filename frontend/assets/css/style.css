@@ -19,9 +19,28 @@ body {
 input{
     padding: 0.5rem 2rem;;
 }
+
 /* Utility Classes */
 .bg-secondary{
     background-color: var(--white)!important;
+}
+.btn{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+}
+.w-10{
+    width: 10%;
+}
+.w-20{
+    width: 20%;
+}
+.w-30{
+    width: 30%;
+}
+.w-40{
+    width: 40%;
 }
 /* Header */
 .sidebar-header {
@@ -202,3 +221,4 @@ input{
         padding-right: 0.4rem;
     }
 }
+/* Category */

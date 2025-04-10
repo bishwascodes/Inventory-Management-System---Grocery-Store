@@ -1,0 +1,27 @@
+[
+    {
+      "Id": "CUST001",
+      "Name": "Alice Johnson",
+      "Phone": "555-123-4567",
+      "Email": "alice.johnson@example.com",
+      "Address": "123 Main Street, Springfield, UT",
+      "JoinDate": "2024-06-12"
+    },
+    {
+      "Id": "CUST002",
+      "Name": "Michael Smith",
+      "Phone": "555-987-6543",
+      "Email": "michael.smith@example.com",
+      "Address": "456 Oak Drive, Richfield, UT",
+      "JoinDate": "2023-11-28"
+    },
+    {
+      "Id": "CUST003",
+      "Name": "Fatima Khan",
+      "Phone": "555-234-9876",
+      "Email": "fatima.khan@example.com",
+      "Address": "789 Pine Ave, Manti, UT",
+      "JoinDate": "2025-01-04"
+    }
+  ]
+  

@@ -1,6 +1,6 @@
-import { getProductsFromApi, getSalesFromApi, getPurchasesFromApi } from './service.js';
+import { getDataFromApi } from '../service.js';
 
-let products = await getProductsFromApi();
+let products = await getDataFromApi("products");
 
 let productRowContainer = document.getElementById('product-row-container');
 

@@ -1,23 +1,12 @@
 const apiAddress = "http://localhost:5090";
 
-export const getProductsFromApi = async () => {
-    const response = await fetch(`${apiAddress}/products`, {
+export const getDataFromApi = async (type) => {
+    const response = await fetch(`${apiAddress}/${type}`, {
         method: "GET",
     });
     return response.json();
 };
-export const getSalesFromApi = async () => {
-    const response = await fetch(`${apiAddress}/sales`, {
-        method: "GET",
-    });
-    return response.json();
-};
-export const getPurchasesFromApi = async () => {
-    const response = await fetch(`${apiAddress}/purchases`, {
-        method: "GET",
-    });
-    return response.json();
-};
+
 
 export const sendProductToApi = async (productId, name, category, quantity, unit, sp, pp, expiryDate, supplier) => {
     const body = {
