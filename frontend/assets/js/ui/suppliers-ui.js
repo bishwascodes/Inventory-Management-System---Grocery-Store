@@ -4,6 +4,30 @@ let suppliers = await getDataFromApi("suppliers");
 
 let supplierRowContainer = document.getElementById('supplier-row-container');
 
+let searchBox = document.getElementById("search");
+searchBox.addEventListener("input", (e) => searchSuppliers(e));
+
+let searchSuppliers = (e) => {
+    let searchVal = e.target.value.trim().toLowerCase();
+    if (searchVal == "") {
+        generateSuppliersUI(suppliers);
+    } else {
+        let filteredSuppliers = suppliers.filter(supplier => {
+            return (
+                supplier.id.toLowerCase().includes(searchVal) ||
+                supplier.name.includes(searchVal) ||
+                supplier.phone.includes(searchVal) ||
+                supplier.contactPerson.toLowerCase().includes(searchVal) ||
+                supplier.email.toLowerCase().includes(searchVal) ||
+                supplier.address.toLowerCase().includes(searchVal) ||
+                supplier.productsSupplied.join(",").toLowerCase().includes(searchVal)
+            );
+        });
+        generateSuppliersUI(filteredSuppliers);
+    }
+}
+
+
 let generateSuppliersUI = (suppliers) => {
     supplierRowContainer.replaceChildren("");
     suppliers.forEach(element => {
@@ -15,7 +39,7 @@ let generateSupplier = (supplier) => {
     itemContainer.classList.add("supplier-item", "d-flex");
 
     const idDiv = document.createElement("div");
-    idDiv.classList.add("supplier-id","w-10");
+    idDiv.classList.add("supplier-id", "w-10");
     const idP = document.createElement("p");
     idP.textContent = supplier.id;
     idDiv.appendChild(idP);
@@ -43,7 +67,7 @@ let generateSupplier = (supplier) => {
     itemContainer.appendChild(phoneDiv);
 
     const emailDiv = document.createElement("div");
-    emailDiv.classList.add("email","w-20");
+    emailDiv.classList.add("email", "w-20");
     const emailP = document.createElement("p");
     emailP.textContent = supplier.email;
     emailDiv.appendChild(emailP);
@@ -92,7 +116,7 @@ let generateSupplier = (supplier) => {
     return itemContainer;
 }
 
-function starterUI(){
+function starterUI() {
     generateSuppliersUI(suppliers);
 }
 starterUI();

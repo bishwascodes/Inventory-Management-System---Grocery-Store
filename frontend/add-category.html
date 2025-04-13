@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales - Inventory Management System</title>
+    <title>Add Category - Inventory Management System</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Js -->
-    <script type="module" src="./assets/js/ui/sales-ui.js"></script>
+    <script type="module" src="./assets/js/ui/add-category-ui.js"></script>
 
 </head>
 
@@ -36,13 +36,13 @@
                             <a href="./index.html">
                                 <li><i class="fa-solid fa-gauge"></i> Dashboard</li>
                             </a>
-                            <a href="./products.html">
+                            <a href="./products.html" class="active">
                                 <li><i class="fa-regular fa-file"></i> Products</li>
                             </a>
                             <a href="./categories.html">
                                 <li><i class="fa-solid fa-table-columns"></i> Categories</li>
                             </a>
-                            <a href="./sales.html" class="active">
+                            <a href="./sales.html">
                                 <li><i class="fa-regular fa-rectangle-list"></i> Sales</li>
                             </a>
                             <a href="./purchases.html">
@@ -67,7 +67,7 @@
                 <main>
                     <header class="d-flex justify-content-between align-items-center top-right-header py-5">
                         <div class="ps-5">
-                            <h2>Sales</h2>
+                            <h2>Add Category</h2>
                         </div>
                         <div class="user-account">
                             <div class="d-flex align-items-center gap-3 pe-5">
@@ -83,79 +83,49 @@
                     <div class="content pt-5 px-5">
                         <div class="title-and-breadcrumbs d-flex justify-content-between">
                             <div class="title">
-                                All Sales
+                                Add new Category
                             </div>
                             <div class="breadcrumb">
-                                Dashboard <i class="fa-solid fa-chevron-right"></i> <span>Sales</span>
+                                Dashboard <i class="fa-solid fa-chevron-right"></i> Category <i
+                                    class="fa-solid fa-chevron-right"></i> <span>Add New</span>
                             </div>
                         </div>
-                        <section class="sales-section bg-secondary py-5 px-3">
-                            <div class="sale-container">
-                                <div class="sale-top-section d-flex justify-content-between align-items-center">
-                                    <form action="" id="sale-search-form">
-                                        <label for="search">Search</label>
-                                        <input id="search" type="search" name="s" id="search" placeholder="Search..">
-                                    </form>
-                                    <div class="right">
-                                        <a href="./add-sale.html" class="btn btn-primary"><i
-                                                class="fa-solid fa-plus"></i> Add New</a>
-                                    </div>
-                                </div>
+                        <section class="add-category-form bg-secondary py-5 px-3">
+                            <form action="" class="needs-validation" id="add-category">
+                                <div class="row mb-4">
+                                    <div class="col-md-4">
+                                        <div class="form-floating">
+                                            <input class="form-control" required type="text" name="cat-name"
+                                                id="cat-name" placeholder="Name of the Category...">
+                                            <label class="" for="cat-name">Category Name</label>
 
-                                <div id="sales-inner" class="pt-5">
-                                    <div class="item-header d-flex">
-                                        <div class="id w-20">
-                                            <p>sale ID</p>
                                         </div>
-                                        <div class="title w-20">
-                                            <p>Product Title</p>
-                                        </div>
-                                        <div class="quantity w-20">
-                                            <p>Quantity</p>
-                                        </div>
-                                        <div class="date w-20">
-                                            <p>Sale Date</p>
-                                        </div>
-                                        <div class="buyer w-20">
-                                            <p>Buyer</p>
-                                        </div>
-                                        <div class="action w-20">
-                                            <p>Action</p>
-                                        </div>
-                                    </div>
-                                    <div id="sale-row-container">
-                                        <div class="sale-item d-flex">
-                                            <div class="id">
-                                                <p>123</p>
-                                            </div>
-                                            <div class="title">
-                                                <p>Milk</p>
-                                            </div>
-                                            <div class="quantity">
-                                                <p>2L</p>
-                                            </div>
-                                            <div class="date">
-                                                <p>12-20-2025</p>
-                                            </div>
-                                            <div class="buyer">
-                                                <p>Bishwas</p>
-                                            </div>
-                                            <div class="action">
-                                                <p>Action</p>
-                                            </div>
-                                            <div class="action">
-                                                <a href="#"><i class="fa-solid fa-eye"></i></a>
-                                                <a href="#"><i class="fa-solid fa-pencil"></i></a>
-                                                <a href="#"><i class="fa-solid fa-trash"></i></a>
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                 </div>
-                            </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-4">
+                                        <div class="form-floating">
+                                            <textarea height="300" class="form-control" type="number" name="cat-desc" id="cat-desc">
+                                            </textarea>
+                                            <label class="" for="cat-desc">Category Description</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <button class="btn btn-primary" type="submit">Add Category</button>
+                                    </div>
+                                </div>
+
+
+                            </form>
                         </section>
+
                     </div>
+
                 </main>
             </div>
         </div>

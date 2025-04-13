@@ -1,8 +1,85 @@
 import { getDataFromApi } from '../service.js';
 
+let isFilterInUse = false;
+
 let products = await getDataFromApi("products");
 
 let productRowContainer = document.getElementById('product-row-container');
+
+let categories = await getDataFromApi("categories");
+let suppliers = await getDataFromApi("suppliers");
+// Category field
+let productCat = document.getElementById("product-category");
+productCat.length = 1; 
+categories.forEach(category => {
+    const option = document.createElement("option");
+    option.value = category.name;
+    option.textContent = category.name;
+    productCat.appendChild(option);
+});
+
+//supplier field
+let productSupplier = document.getElementById("product-supplier");
+productSupplier.length = 1; 
+suppliers.forEach(category => {
+    const option = document.createElement("option");
+    option.value = category.name;
+    option.textContent = category.name;
+    productSupplier.appendChild(option);
+});
+
+let filterBtn = document.getElementById("filter-btn");
+let filterOptions = document.getElementById("filter-options");
+filterBtn.addEventListener("click", (e)=>{
+    filterOptions.classList.toggle("d-none");
+})
+
+let applyFilterBtn = document.getElementById("apply-filter-btn");
+let resetFilterBtn = document.getElementById("reset-filter-btn");
+
+resetFilterBtn.addEventListener("click", () => {
+    isFilterInUse = false;
+    productCat.value = "";
+    productSupplier.value = "";
+    filterAndSearchProducts();
+});
+
+applyFilterBtn.addEventListener("click", () => {
+    isFilterInUse = true;
+    filterAndSearchProducts();
+});
+
+let searchBox = document.getElementById("search");
+searchBox.addEventListener("input", (e) => filterAndSearchProducts());
+
+let filterAndSearchProducts = () => {
+    let searchVal = searchBox.value.trim().toLowerCase();
+    let selectedCategory = productCat.value;
+    let selectedSupplier = productSupplier.value;
+
+    let filteredProducts = products.filter(product => {
+        const name = product.name.toLowerCase();
+        const category = product.category.toLowerCase();
+        const supplier = product.supplier.toLowerCase();
+    
+        const hasSearchMatch =
+            !searchVal ||
+            name.includes(searchVal) ||
+            category.includes(searchVal) ||
+            supplier.includes(searchVal);
+    
+        const hasCategoryMatch =
+            !selectedCategory || product.category === selectedCategory;
+    
+        const hasSupplierMatch =
+            !selectedSupplier || product.supplier === selectedSupplier;
+    
+        return hasSearchMatch && hasCategoryMatch && hasSupplierMatch;
+    });
+    
+
+    generateProductsUI(filteredProducts);
+}
 
 let generateProductsUI = (products) => {
     productRowContainer.replaceChildren("");
@@ -10,6 +87,7 @@ let generateProductsUI = (products) => {
         productRowContainer.appendChild(generateProduct(element));
     });
 }
+
 let generateProduct = (product) => {
     const itemContainer = document.createElement("div");
     itemContainer.classList.add("product-item", "d-flex");
@@ -78,7 +156,7 @@ let generateProduct = (product) => {
     return itemContainer;
 }
 
-function starterUI(){
+function starterUI() {
     generateProductsUI(products);
 }
 starterUI();

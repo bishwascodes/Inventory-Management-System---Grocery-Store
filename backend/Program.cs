@@ -69,6 +69,13 @@ app.MapPost("/product", (Product newProduct) =>
     File.WriteAllText(productsFileName, json);
 
 });
+app.MapPost("/category", (Category newCat) =>
+{
+    categories.Add(newCat);
+    var json = JsonSerializer.Serialize(categories);
+    File.WriteAllText(categoriesFileName, json);
+
+});
 app.MapPost("/purchase", (Purchase newPurchase) =>
 {
     purchases.Add(newPurchase);

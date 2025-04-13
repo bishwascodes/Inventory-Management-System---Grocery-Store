@@ -4,6 +4,25 @@ let categories = await getDataFromApi("categories");
 
 let categoryRowContainer = document.getElementById('category-row-container');
 
+let searchBox = document.getElementById("search");
+searchBox.addEventListener("input", (e) => searchCats(e));
+
+let searchCats = (e) => {
+    let searchVal = e.target.value.trim().toLowerCase();
+    if (searchVal == "") {
+        generateCategoriesUI(categories);
+    } else {
+        let filteredCats = categories.filter(cat => {
+            return (
+                cat.name.toLowerCase().includes(searchVal) ||
+                cat.id.toLowerCase().includes(searchVal) ||
+                cat.description.toLowerCase().includes(searchVal)
+            );
+        });
+        generateCategoriesUI(filteredCats);
+    }
+}
+
 let generateCategoriesUI = (categories) => {
     categoryRowContainer.replaceChildren("");
     categories.forEach(element => {

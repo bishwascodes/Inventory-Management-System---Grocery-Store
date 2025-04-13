@@ -11,6 +11,28 @@ let purchases = await getDataFromApi("purchases");
 
 let purchaseRowContainer = document.getElementById('purchase-row-container');
 
+let searchBox = document.getElementById("search");
+searchBox.addEventListener("input", (e) => searchPurchases(e));
+
+let searchPurchases = (e) => {
+    let searchVal = e.target.value.trim().toLowerCase();
+    if (searchVal == "") {
+        generatepurchasesUI(purchases);
+    } else {
+        let filteredPurchases = purchases.filter(purchase => {
+            const productName = getProductNameById(products, purchase.productId).toLowerCase();
+            return (
+                purchase.id.toLowerCase().includes(searchVal) ||
+                productName.includes(searchVal) ||
+                purchase.purchaseDate.toLowerCase().includes(searchVal) ||
+                purchase.supplier.toLowerCase().includes(searchVal)
+            );
+        });
+        generatepurchasesUI(filteredPurchases);
+    }
+}
+
+
 let generatepurchasesUI = (purchases) => {
     purchaseRowContainer.replaceChildren("");
     purchases.forEach(element => {

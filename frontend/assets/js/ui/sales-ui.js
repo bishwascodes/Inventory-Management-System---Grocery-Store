@@ -6,10 +6,37 @@ let getProductNameById = (products, productId) => {
     const matched = products.filter(p => p.id === productId);
     return matched.length > 0 ? matched[0].name : "Invalid";
 }
+const getProductIdByName = (products, productName) => {
+    const matched = products.filter(p => p.name === productName);
+    return matched.length > 0 ? matched[0].id : "Invalid";
+};
+
 
 let sales = await getDataFromApi("sales");
 
 let saleRowContainer = document.getElementById('sale-row-container');
+
+let searchBox = document.getElementById("search");
+searchBox.addEventListener("input", (e) => searchSales(e));
+
+let searchSales = (e) => {
+    let searchVal = e.target.value.trim().toLowerCase();
+    if (searchVal == "") {
+        generatesalesUI(sales);
+    } else {
+        let filteredSales = sales.filter(sale => {
+            const productName = getProductNameById(products, sale.productId).toLowerCase();
+            return (
+                sale.id.toLowerCase().includes(searchVal) ||
+                productName.includes(searchVal) ||
+                sale.sellDate.toLowerCase().includes(searchVal) ||
+                sale.buyer.toLowerCase().includes(searchVal)
+            );
+        });
+        generatesalesUI(filteredSales);
+    }
+}
+
 
 let generatesalesUI = (sales) => {
     saleRowContainer.replaceChildren("");
