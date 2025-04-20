@@ -56,7 +56,14 @@ input {
         font-size: 2rem;
     }
 }
-
+.action a{
+    color: var(--dark);
+    padding-right: 0.6rem;
+    transition: 0.5s ease-in-out all;
+    &:hover{
+        color: var(--accent);
+    }
+}
 /* Header */
 .sidebar-header {
     background: var(--secondary);

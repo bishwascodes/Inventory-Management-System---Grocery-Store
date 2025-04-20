@@ -39,7 +39,7 @@ let generateCategory = (category) => {
     idP.textContent = category.id;
     idDiv.appendChild(idP);
     itemContainer.appendChild(idDiv);
-    
+
     const titleDiv = document.createElement("div");
     titleDiv.classList.add("title","w-20");
     const titleP = document.createElement("p");
@@ -57,13 +57,6 @@ let generateCategory = (category) => {
 
     const actionDiv = document.createElement("div");
     actionDiv.classList.add("action","w-20");
-
-    const viewLink = document.createElement("a");
-    viewLink.href = "#";
-    const viewIcon = document.createElement("i");
-    viewIcon.classList.add("fa-solid", "fa-eye");
-    viewLink.appendChild(viewIcon);
-    actionDiv.appendChild(viewLink);
 
     const editLink = document.createElement("a");
     editLink.href = "#";

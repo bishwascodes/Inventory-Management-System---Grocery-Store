@@ -31,6 +31,16 @@ export const sendProductToApi = async (product) => {
   });
   return response;
 };
+export const sendSaleToApi = async (sale) => {
+  const response = await fetch(`${apiAddress}/sale`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(sale),
+  });
+  return response;
+};
 
 export const sendCategoryToApi = async (cat) => {
   const response = await fetch(`${apiAddress}/category`, {
