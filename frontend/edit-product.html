@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add new purchase - Inventory Management System</title>
+    <title>Edit Product - Inventory Management System</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Js -->
-    <script type="module" src="./assets/js/ui/add-product-ui.js"></script>
+    <script type="module" src="./assets/js/ui/edit-product-ui.js"></script>
 
 </head>
 
@@ -36,7 +36,7 @@
                             <a href="./index.html">
                                 <li><i class="fa-solid fa-gauge"></i> Dashboard</li>
                             </a>
-                            <a href="./products.html">
+                            <a href="./products.html" class="active">
                                 <li><i class="fa-regular fa-file"></i> Products</li>
                             </a>
                             <a href="./categories.html">
@@ -45,7 +45,7 @@
                             <a href="./sales.html">
                                 <li><i class="fa-regular fa-rectangle-list"></i> Sales</li>
                             </a>
-                            <a href="./purchases.html" class="active">
+                            <a href="./purchases.html">
                                 <li><i class="fa-regular fa-circle-check"></i> Purchases</li>
                             </a>
                             <a href="./suppliers.html">
@@ -67,7 +67,7 @@
                 <main>
                     <header class="d-flex justify-content-between align-items-center top-right-header py-5">
                         <div class="ps-5">
-                            <h2>Add New Purchase</h2>
+                            <h2>Edit Product</h2>
                         </div>
                         <div class="user-account">
                             <div class="d-flex align-items-center gap-3 pe-5">
@@ -83,15 +83,15 @@
                     <div class="content pt-5 px-5">
                         <div class="title-and-breadcrumbs d-flex justify-content-between">
                             <div class="title">
-                                Add new Purchase
+                                Edit Product Details
                             </div>
                             <div class="breadcrumb">
-                                Dashboard <i class="fa-solid fa-chevron-right"></i> Purchases <i
-                                    class="fa-solid fa-chevron-right"></i> <span>Add New</span>
+                                Dashboard <i class="fa-solid fa-chevron-right"></i> Products <i
+                                    class="fa-solid fa-chevron-right"></i> <span>Edit Details</span>
                             </div>
                         </div>
                         <section class="add-product-form bg-secondary py-5 px-3">
-                            <form action="" class="needs-validation" id="add-purchase">
+                            <form action="" class="needs-validation" id="add-product">
                                 <div class="row mb-4">
                                     <div class="col-md-4">
                                         <div class="form-floating has-validation">
@@ -119,14 +119,14 @@
                                 <div class="row mb-4">
                                     <div class="col-md-4">
                                         <div class="form-floating">
-                                            <input class="form-control" type="number" name="product-selling-price"
+                                            <input step=".01" class="form-control" type="number" name="product-selling-price"
                                                 id="product-selling-price" placeholder="$0.00">
                                             <label class="" for="product-selling-price">Selling Price</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-floating">
-                                            <input required class="form-control" type="number" name="product-purchase-price"
+                                            <input step=".01" required class="form-control" type="number" name="product-purchase-price"
                                                 id="product-purchase-price" placeholder="$0.00">
                                             <label class="" for="product-purchase-price">Purchase Price Price</label>
                                         </div>
@@ -136,14 +136,14 @@
                                     <div class="col-md-4">
                                         <div class="form-floating">
                                             <input required class="form-control" type="number" name="product-quantity"
-                                                id="product-quantity">
+                                                id="product-quantity" placeholder="Product Quantity">
                                             <label class="" for="product-quantity">Product Quantity</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-floating">
                                             <input required class="form-control" type="text" name="quantity-unit"
-                                                id="quantity-unit">
+                                                id="quantity-unit" placeholder="Quantity Unit">
                                             <label class="" for="quantity-unit">Quantity Unit</label>
                                         </div>
                                     </div>
@@ -171,7 +171,7 @@
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-12">
-                                        <button class="btn btn-primary" type="submit">Add Product</button>
+                                        <button class="btn btn-primary" type="submit">Save Changes</button>
                                     </div>
                                 </div>
 

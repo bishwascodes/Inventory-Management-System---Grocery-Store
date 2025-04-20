@@ -1,0 +1,59 @@
+import { getDataFromApi, sendCustomerToApi } from "../service.js";
+
+const customers = await getDataFromApi("customers");
+const addCustomerForm = document.getElementById("add-customer");
+
+const customerName = document.getElementById("customer-name");
+const customerAddress = document.getElementById("customer-address");
+const customerPhone = document.getElementById("customer-phone");
+const customerEmail = document.getElementById("customer-email");
+const customerJoinDate = document.getElementById("customer-join-date");
+
+const formFields = [
+    customerName,
+    customerAddress,
+    customerPhone,
+    customerEmail,
+    customerJoinDate
+];
+
+// Remove red borders on input
+formFields.forEach(field => {
+    field.addEventListener("input", () => {
+        field.classList.remove("border", "border-danger");
+    });
+});
+
+
+
+addCustomerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    let invalidFields = formFields.filter(field => !field.value.trim());
+
+    if (invalidFields.length > 0) {
+        invalidFields.forEach(field => field.classList.add("border", "border-danger"));
+        return;
+    }
+    let idOriginal = customers[customers.length - 1].id;
+    let lastTwo = parseInt(idOriginal.slice(-3)) + 1 ;
+    const firstPart = idOriginal.slice(0, -2);
+    let idNew = firstPart + lastTwo;
+    const newCustomer = {
+        Id: idNew,
+        Name: customerName.value.trim(),
+        Phone: customerPhone.value.trim(),
+        Email: customerEmail.value.trim(),
+        Address: customerAddress.value.trim(),
+        JoinDate: customerJoinDate.value
+    };
+
+    const response = await sendCustomerToApi(newCustomer);
+    if (response.ok) {
+        alert("Customer added successfully!");
+        addCustomerForm.reset();
+    } else {
+        const errorText = await response.text();
+        alert("Failed to add customer.\n" + errorText);
+    }
+});

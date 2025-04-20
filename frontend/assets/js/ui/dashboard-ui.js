@@ -1,84 +1,126 @@
 import { getDataFromApi } from '../service.js';
 
 let products = await getDataFromApi("products");
+let sales = await getDataFromApi("sales");
+let purchases = await getDataFromApi("purchases");
 
-let productRowContainer = document.getElementById('product-row-container');
+let totalProducts = document.getElementById("totalProducts");
+totalProducts.textContent = products.length;
 
-let generateProductsUI = (products) => {
-    productRowContainer.replaceChildren("");
-    products.forEach(element => {
-        productRowContainer.appendChild(generateProduct(element));
+let totalSales = document.getElementById("totalSales");
+totalSales.textContent = sales.length;
+
+let totalPurchases = document.getElementById("totalPurchases");
+totalPurchases.textContent = purchases.length;
+
+// For Low Stocks and Expiration
+const lowStockLimit = 10;
+const expirayDaysLimit = 14;
+
+const today = new Date();
+
+const lowStockProducts = products.filter(product => product.quantity <= lowStockLimit);
+
+const expiringOrExpiredProducts = products.filter(product => {
+    if (!product.expiryDate) return false; //not expirable
+    const expiryDate = new Date(product.expiryDate.split("T")[0]);
+    const timeDifference = expiryDate - today; 
+    const daysUntilExpiry = timeDifference / (1000 * 60 * 60 * 24);
+
+    return daysUntilExpiry <= expirayDaysLimit;
+}).sort((a, b) => {
+    const dateA = new Date(a.expiryDate.split("T")[0]);
+    const dateB = new Date(b.expiryDate.split("T")[0]);
+    return dateA - dateB; // earlier expiry comes first
+});
+
+const lowStockSection = document.getElementById("low-stock-section");
+const lowStockList = document.getElementById("low-stock-list");
+
+let generateLowStockCard = (product) => {
+    const item = document.createElement("div");
+    item.className = "col-md-4";
+
+    const card = document.createElement("div");
+    card.className = "low-stock-card";
+
+    const link = document.createElement("a");
+    link.setAttribute("href", `./view-product.html?id=${product.id}`);
+
+    card.appendChild(link);
+
+    const title = document.createElement("h5");
+    title.textContent = product.name;
+
+    const category = document.createElement("p");
+    category.textContent = `Category: ${product.category}`;
+
+    const quantity = document.createElement("p");
+    quantity.innerHTML = `Stock Left: <span class="badge">${product.quantity} ${product.unit}</span>`;
+
+    const supplier = document.createElement("p");
+    supplier.textContent = `Supplier: ${product.supplier}`;
+
+    link.appendChild(title);
+    link.appendChild(category);
+    link.appendChild(quantity);
+    link.appendChild(supplier);
+    item.appendChild(card);
+    return item;
+}
+
+// low stock items showing
+if (lowStockProducts.length > 0) {
+    lowStockProducts.forEach(p => {
+        const card = generateLowStockCard(p);
+        lowStockList.appendChild(card);
     });
-}
-let generateProduct = (product) => {
-    const itemContainer = document.createElement("div");
-    itemContainer.classList.add("product-item", "d-flex");
-
-    const titleDiv = document.createElement("div");
-    titleDiv.classList.add("title");
-    const titleP = document.createElement("p");
-    titleP.textContent = product.name;
-    titleDiv.appendChild(titleP);
-    itemContainer.appendChild(titleDiv);
-
-    const idDiv = document.createElement("div");
-    idDiv.classList.add("id");
-    const idP = document.createElement("p");
-    idP.textContent = product.id;
-    idDiv.appendChild(idP);
-    itemContainer.appendChild(idDiv);
-
-    const priceDiv = document.createElement("div");
-    priceDiv.classList.add("price");
-    const priceP = document.createElement("p");
-    priceP.textContent = product.sellingPrice;
-    priceDiv.appendChild(priceP);
-    itemContainer.appendChild(priceDiv);
-
-    const categoryDiv = document.createElement("div");
-    categoryDiv.classList.add("category");
-    const categoryP = document.createElement("p");
-    categoryP.textContent = product.category;
-    categoryDiv.appendChild(categoryP);
-    itemContainer.appendChild(categoryDiv);
-
-    const stockDiv = document.createElement("div");
-    stockDiv.classList.add("stock");
-    const stockP = document.createElement("p");
-    stockP.textContent = product.quantity + product.unit;
-    stockDiv.appendChild(stockP);
-    itemContainer.appendChild(stockDiv);
-
-    const actionDiv = document.createElement("div");
-    actionDiv.classList.add("action");
-
-    const viewLink = document.createElement("a");
-    viewLink.href = "#";
-    const viewIcon = document.createElement("i");
-    viewIcon.classList.add("fa-solid", "fa-eye");
-    viewLink.appendChild(viewIcon);
-    actionDiv.appendChild(viewLink);
-
-    const editLink = document.createElement("a");
-    editLink.href = "#";
-    const editIcon = document.createElement("i");
-    editIcon.classList.add("fa-solid", "fa-pencil");
-    editLink.appendChild(editIcon);
-    actionDiv.appendChild(editLink);
-
-    const deleteLink = document.createElement("a");
-    deleteLink.href = "#";
-    const deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("fa-solid", "fa-trash");
-    deleteLink.appendChild(deleteIcon);
-    actionDiv.appendChild(deleteLink);
-
-    itemContainer.appendChild(actionDiv);
-
-    return itemContainer;
+    lowStockSection.classList.remove("d-none");
 }
 
-function starterUI(){
-    generateProductsUI(products);
+// expiring/ed section
+const expirySection = document.getElementById("expiring-soon-section");
+const expiryList = document.getElementById("expiring-soon-list");
+
+let generateExpiringCard = (product) => {
+    const col = document.createElement("div");
+    col.className = "col-md-4";
+
+    const card = document.createElement("div");
+    card.className = "expiring-card";
+
+    const link = document.createElement("a");
+    link.setAttribute("href", `./view-product.html?id=${product.id}`);
+
+    card.appendChild(link);
+
+    const title = document.createElement("h5");
+    title.textContent = product.name;
+
+    const category = document.createElement("p");
+    category.textContent = `Category: ${product.category}`;
+
+    const expiry = document.createElement("p");
+    const formattedDate = product.expiryDate?.split("T")[0] || "N/A";
+    expiry.innerHTML = `Expires/ed on: <span class="badge">${formattedDate}</span>`;
+
+    const supplier = document.createElement("p");
+    supplier.textContent = `Supplier: ${product.supplier}`;
+
+    link.appendChild(title);
+    link.appendChild(category);
+    link.appendChild(expiry);
+    link.appendChild(supplier);
+    col.appendChild(card);
+    return col;
 }
-starterUI();
+
+// generating the UI
+if (expiringOrExpiredProducts.length > 0) {
+    expiringOrExpiredProducts.forEach(p => {
+        const card = generateExpiringCard(p);
+        expiryList.appendChild(card);
+    });
+    expirySection.classList.remove("d-none");
+}
+

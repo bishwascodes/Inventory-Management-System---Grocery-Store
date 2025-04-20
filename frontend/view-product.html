@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Category - Inventory Management System</title>
+    <title>View Product - Inventory Management System</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Js -->
-    <script type="module" src="./assets/js/ui/add-category-ui.js"></script>
+    <script type="module" src="./assets/js/ui/view-product-ui.js"></script>
 
 </head>
 
@@ -36,10 +36,10 @@
                             <a href="./index.html">
                                 <li><i class="fa-solid fa-gauge"></i> Dashboard</li>
                             </a>
-                            <a href="./products.html">
+                            <a href="./products.html" class="active">
                                 <li><i class="fa-regular fa-file"></i> Products</li>
                             </a>
-                            <a href="./categories.html" class="active">
+                            <a href="./categories.html">
                                 <li><i class="fa-solid fa-table-columns"></i> Categories</li>
                             </a>
                             <a href="./sales.html">
@@ -67,7 +67,7 @@
                 <main>
                     <header class="d-flex justify-content-between align-items-center top-right-header py-5">
                         <div class="ps-5">
-                            <h2>Add Category</h2>
+                            <h2>Dashboard</h2>
                         </div>
                         <div class="user-account">
                             <div class="d-flex align-items-center gap-3 pe-5">
@@ -83,47 +83,59 @@
                     <div class="content pt-5 px-5">
                         <div class="title-and-breadcrumbs d-flex justify-content-between">
                             <div class="title">
-                                Add new Category
+                                Product Details
                             </div>
                             <div class="breadcrumb">
-                                Dashboard <i class="fa-solid fa-chevron-right"></i> Category <i
-                                    class="fa-solid fa-chevron-right"></i> <span>Add New</span>
+                                Dashboard <i class="fa-solid fa-chevron-right"></i> <span>Products</span>
                             </div>
                         </div>
-                        <section class="add-category-form bg-secondary py-5 px-3">
-                            <form action="" class="needs-validation" id="add-category">
-                                <div class="row mb-4">
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <input class="form-control" required type="text" name="cat-name"
-                                                id="cat-name" placeholder="Name of the Category...">
-                                            <label class="" for="cat-name">Category Name</label>
-
-                                        </div>
+                        <section class="products-section bg-secondary py-5 px-3">
+                            <div class="view-product-container">
+                                <div class="product-card">
+                                    <h2 id="product-name">Milk (Whole)</h2>
+                                    <div class="subtitle">Product ID: <span class="badge" id="product-id">#1</span>
                                     </div>
 
-                                </div>
-                                <div class="row mb-4">
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <textarea height="300" class="form-control" type="number" name="cat-desc" id="cat-desc"></textarea><label class="" for="cat-desc">Category Description</label>
-                                        </div>
+                                    <div class="info-group">
+                                        <div class="info-label">Category</div>
+                                        <div class="info-value" id="product-category">Dairy</div>
                                     </div>
 
-                                </div>
+                                    <div class="info-group">
+                                        <div class="info-label">Quantity</div>
+                                        <div class="info-value" id="product-quantity">10 Litre</div>
+                                    </div>
 
-                                <div class="row mb-4">
-                                    <div class="col-12">
-                                        <button class="btn btn-primary" type="submit">Add Category</button>
+                                    <div class="info-group">
+                                        <div class="info-label">Selling Price</div>
+                                        <div class="info-value" id="product-sp">$2.50</div>
+                                    </div>
+
+                                    <div class="info-group">
+                                        <div class="info-label">Purchase Price</div>
+                                        <div class="info-value" id="product-cp">$2.00</div>
+                                    </div>
+
+                                    <div class="info-group">
+                                        <div class="info-label">Expiry Date</div>
+                                        <div class="info-value" id="product-expiry">2025-06-10</div>
+                                    </div>
+
+                                    <div class="divider"></div>
+
+                                    <div class="info-group">
+                                        <div class="info-label">Supplier</div>
+                                        <div class="info-value" id="product-supplier">DairyFarm Inc.</div>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="info-group justify-content-center">
+                                        <a id="edit-btn" href="#" class="btn btn-secondary">Edit Product</a>
                                     </div>
                                 </div>
 
-
-                            </form>
+                            </div>
                         </section>
-
                     </div>
-
                 </main>
             </div>
         </div>

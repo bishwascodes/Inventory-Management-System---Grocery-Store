@@ -44,39 +44,25 @@ let generatecustomer = (customer) => {
     itemContainer.appendChild(idDiv);
 
     const nameDiv = document.createElement("div");
-    nameDiv.classList.add("customer-name", "w-10");
+    nameDiv.classList.add("customer-name", "w-20");
     const nameP = document.createElement("p");
     nameP.textContent = customer.name;
     nameDiv.appendChild(nameP);
     itemContainer.appendChild(nameDiv);
 
     const phoneDiv = document.createElement("div");
-    phoneDiv.classList.add("phone", "w-10");
+    phoneDiv.classList.add("phone", "w-20");
     const phoneP = document.createElement("p");
     phoneP.textContent = customer.phone;
     phoneDiv.appendChild(phoneP);
     itemContainer.appendChild(phoneDiv);
 
     const emailDiv = document.createElement("div");
-    emailDiv.classList.add("email", "w-20");
+    emailDiv.classList.add("email", "w-30");
     const emailP = document.createElement("p");
     emailP.textContent = customer.email;
     emailDiv.appendChild(emailP);
     itemContainer.appendChild(emailDiv);
-
-    const addressDiv = document.createElement("div");
-    addressDiv.classList.add("address", "w-20");
-    const addressP = document.createElement("p");
-    addressP.textContent = customer.address;
-    addressDiv.appendChild(addressP);
-    itemContainer.appendChild(addressDiv);
-
-    const joinDateDiv = document.createElement("div");
-    joinDateDiv.classList.add("join-date", "w-10");
-    const joinDateP = document.createElement("p");
-    joinDateP.textContent = customer.joinDate;
-    joinDateDiv.appendChild(joinDateP);
-    itemContainer.appendChild(joinDateDiv);
 
     const actionDiv = document.createElement("div");
     actionDiv.classList.add("action", "w-20");

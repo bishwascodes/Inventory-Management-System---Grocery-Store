@@ -12,5 +12,12 @@
         "QuantitySold": 2,
         "SellDate": "2025-03-15",
         "Buyer": "Buyer2"
+    },
+    {
+        "Id": "S3",
+        "ProductId": "5",
+        "QuantitySold": 3,
+        "SellDate": "2025-03-15",
+        "Buyer": "Buyer3"
     }
 ]

@@ -64,17 +64,64 @@ app.MapGet("/categories", () => categories);
 // Post Endpoints
 app.MapPost("/product", (Product newProduct) =>
 {
-    products.Add(newProduct);
+    // Find the existing product by Id for edit feature
+    var existingProduct = products.FirstOrDefault(p => p.Id == newProduct.Id);
+    if (existingProduct != null)
+    {
+        var index = products.IndexOf(existingProduct);
+        products[index] = newProduct;
+    }
+    else
+    {
+        products.Add(newProduct);
+    }
     var json = JsonSerializer.Serialize(products);
     File.WriteAllText(productsFileName, json);
-
 });
+
+app.MapGet("/product/{id}", (string id) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+
+    if (product != null)
+    {
+        return Results.Ok(product);
+    }
+    return Results.NotFound(new { message = "Product not found." });
+});
+
+app.MapPost("/delete-product/{id}", (string id) =>
+{
+    var productToDelete = products.FirstOrDefault(p => p.Id == id);
+
+    if (productToDelete != null)
+    {
+        products.Remove(productToDelete);
+        var json = JsonSerializer.Serialize(products);
+        File.WriteAllText(productsFileName, json);
+    }
+   
+});
+
 app.MapPost("/category", (Category newCat) =>
 {
     categories.Add(newCat);
     var json = JsonSerializer.Serialize(categories);
     File.WriteAllText(categoriesFileName, json);
 
+});
+app.MapPost("/supplier", (Supplier newSupp) =>
+{
+    suppliers.Add(newSupp);
+    var json = JsonSerializer.Serialize(suppliers);
+    File.WriteAllText(suppliersFileName, json);
+
+});
+app.MapPost("/customer", (Customer newCustomer) =>
+{
+    customers.Add(newCustomer);
+    var json = JsonSerializer.Serialize(customers);
+    File.WriteAllText(customersFileName, json);
 });
 app.MapPost("/purchase", (Purchase newPurchase) =>
 {

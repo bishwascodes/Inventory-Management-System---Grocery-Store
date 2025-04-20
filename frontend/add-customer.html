@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Inventory Management System</title>
+    <title>Add Customers - Inventory Management System</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Js -->
-    <script type="module" src="./assets/js/ui/add-product-ui.js"></script>
+    <script type="module" src="./assets/js/ui/add-customer-ui.js"></script>
 
 </head>
 
@@ -36,7 +36,7 @@
                             <a href="./index.html">
                                 <li><i class="fa-solid fa-gauge"></i> Dashboard</li>
                             </a>
-                            <a href="./products.html" class="active">
+                            <a href="./products.html">
                                 <li><i class="fa-regular fa-file"></i> Products</li>
                             </a>
                             <a href="./categories.html">
@@ -51,7 +51,7 @@
                             <a href="./suppliers.html">
                                 <li><i class="fa-solid fa-user-plus"></i> Suppliers</li>
                             </a>
-                            <a href="./customers.html">
+                            <a href="./customers.html" class="active">
                                 <li><i class="fa-solid fa-users"></i> Customers</li>
                             </a>
                             <a class="log-out" href="#">
@@ -67,7 +67,7 @@
                 <main>
                     <header class="d-flex justify-content-between align-items-center top-right-header py-5">
                         <div class="ps-5">
-                            <h2>Add Product</h2>
+                            <h2>Add Customer</h2>
                         </div>
                         <div class="user-account">
                             <div class="d-flex align-items-center gap-3 pe-5">
@@ -83,99 +83,61 @@
                     <div class="content pt-5 px-5">
                         <div class="title-and-breadcrumbs d-flex justify-content-between">
                             <div class="title">
-                                Add new Product
+                                Add new Customer
                             </div>
                             <div class="breadcrumb">
-                                Dashboard <i class="fa-solid fa-chevron-right"></i> Products <i
+                                Dashboard <i class="fa-solid fa-chevron-right"></i> Customers <i
                                     class="fa-solid fa-chevron-right"></i> <span>Add New</span>
                             </div>
                         </div>
-                        <section class="add-product-form bg-secondary py-5 px-3">
-                            <form action="" class="needs-validation" id="add-product">
+                        <section class="add-customer-form bg-secondary py-5 px-3">
+                            <form action="" class="needs-validation" id="add-customer">
                                 <div class="row mb-4">
                                     <div class="col-md-4">
                                         <div class="form-floating has-validation">
-                                            <input class="form-control" required type="text" name="product-title"
-                                                id="product-title" placeholder="Name of the Product...">
-                                            <label class="" for="product-title">Product Title</label>
-                                            <div class="invalid-feedback">
-                                                Product Name is required
-                                            </div>
-
+                                            <input class="form-control" required type="text" name="" id="customer-name"
+                                                placeholder="Customer Name">
+                                            <label class="" for="customer-name">Customer Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-floating">
-                                            <select id="product-category" required class="form-select" aria-label="Default select example">
-                                                <option value="" disabled selected>Select a Category</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                            <label class="" for="product-category">Category</label>
+                                            <input required class="form-control" type="text" name="customer-address"
+                                                id="customer-address" placeholder="Customer Address">
+                                            <label class="" for="customer-address">Customer Address</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-md-4">
                                         <div class="form-floating">
-                                            <input class="form-control" type="number" name="product-selling-price"
-                                                id="product-selling-price" placeholder="$0.00">
-                                            <label class="" for="product-selling-price">Selling Price</label>
+                                            <input class="form-control" type="number" name="customer-phone"
+                                                id="customer-phone" placeholder="Customer Phone Number">
+                                            <label class="" for="customer-phone">Customer Phone Number</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-floating">
-                                            <input required class="form-control" type="number" name="product-purchase-price"
-                                                id="product-purchase-price" placeholder="$0.00">
-                                            <label class="" for="product-purchase-price">Purchase Price Price</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <input required class="form-control" type="number" name="product-quantity"
-                                                id="product-quantity">
-                                            <label class="" for="product-quantity">Product Quantity</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <input required class="form-control" type="text" name="quantity-unit"
-                                                id="quantity-unit">
-                                            <label class="" for="quantity-unit">Quantity Unit</label>
+                                            <input class="form-control" type="email" name="customer-email"
+                                                id="customer-email" placeholder="Customer Email Address">
+                                            <label class="" for="customer-email">Customer Email Address</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-md-4">
                                         <div class="form-floating">
-                                            <input required class="form-control" type="date" name="product-expiry"
-                                                id="product-expiry" placeholder="$0.00">
-                                            <label class="" for="product-expiry">Expiry Date(Leave Empty if
-                                                none)</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <select id="product-supplier" required class="form-select" aria-label="Default select example">
-                                                <option value="" disabled selected>Select a Supplier</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                            <label class="" for="product-supplier">Supplier</label>
+                                            <input required class="form-control" type="date" name="customer-join-date"
+                                                id="customer-join-date" placeholder="Customer Join Date">
+                                            <label class="" for="customer-join-date">Customer Join Date</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-12">
-                                        <button class="btn btn-primary" type="submit">Add Product</button>
+                                        <button class="btn btn-primary" type="submit">Add Customer</button>
                                     </div>
                                 </div>
-
-
                             </form>
                         </section>
 

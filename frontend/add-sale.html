@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Inventory Management System</title>
+    <title>Add Sale - Inventory Management System</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,13 +36,13 @@
                             <a href="./index.html">
                                 <li><i class="fa-solid fa-gauge"></i> Dashboard</li>
                             </a>
-                            <a href="./products.html" class="active">
+                            <a href="./products.html">
                                 <li><i class="fa-regular fa-file"></i> Products</li>
                             </a>
                             <a href="./categories.html">
                                 <li><i class="fa-solid fa-table-columns"></i> Categories</li>
                             </a>
-                            <a href="./sales.html">
+                            <a href="./sales.html" class="active">
                                 <li><i class="fa-regular fa-rectangle-list"></i> Sales</li>
                             </a>
                             <a href="./purchases.html">
@@ -67,7 +67,7 @@
                 <main>
                     <header class="d-flex justify-content-between align-items-center top-right-header py-5">
                         <div class="ps-5">
-                            <h2>Add Product</h2>
+                            <h2>Add Sale</h2>
                         </div>
                         <div class="user-account">
                             <div class="d-flex align-items-center gap-3 pe-5">
@@ -83,95 +83,58 @@
                     <div class="content pt-5 px-5">
                         <div class="title-and-breadcrumbs d-flex justify-content-between">
                             <div class="title">
-                                Add new Product
+                                Add new Sale
                             </div>
                             <div class="breadcrumb">
-                                Dashboard <i class="fa-solid fa-chevron-right"></i> Products <i
+                                Dashboard <i class="fa-solid fa-chevron-right"></i> Sales <i
                                     class="fa-solid fa-chevron-right"></i> <span>Add New</span>
                             </div>
                         </div>
-                        <section class="add-product-form bg-secondary py-5 px-3">
-                            <form action="" class="needs-validation" id="add-product">
+                        <section class="add-sale-form bg-secondary py-5 px-3">
+                            <form action="" class="needs-validation" id="add-sales">
                                 <div class="row mb-4">
                                     <div class="col-md-4">
-                                        <div class="form-floating has-validation">
-                                            <input class="form-control" required type="text" name="product-title"
-                                                id="product-title" placeholder="Name of the Product...">
-                                            <label class="" for="product-title">Product Title</label>
-                                            <div class="invalid-feedback">
-                                                Product Name is required
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
                                         <div class="form-floating">
-                                            <select id="product-category" required class="form-select" aria-label="Default select example">
-                                                <option value="" disabled selected>Select a Category</option>
+                                            <select id="product-name" required class="form-select" aria-label="Default select example">
+                                                <option value="" disabled selected>Select a Product</option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
                                             </select>
-                                            <label class="" for="product-category">Category</label>
+                                            <label class="" for="product-name">Product</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-floating">
+                                            <input class="form-control" type="number" name="product-quantity"
+                                                id="product-quantity" placeholder="$0.00">
+                                            <label class="" for="product-selling-price">Product Quantity</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-md-4">
                                         <div class="form-floating">
-                                            <input class="form-control" type="number" name="product-selling-price"
-                                                id="product-selling-price" placeholder="$0.00">
-                                            <label class="" for="product-selling-price">Selling Price</label>
+                                            <input required class="form-control" type="date" name="product-sale-date"
+                                                id="product-sale-date" placeholder="$0.00">
+                                            <label class="" for="product-sale-date">Sale Date</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-floating">
-                                            <input required class="form-control" type="number" name="product-purchase-price"
-                                                id="product-purchase-price" placeholder="$0.00">
-                                            <label class="" for="product-purchase-price">Purchase Price Price</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <input required class="form-control" type="number" name="product-quantity"
-                                                id="product-quantity">
-                                            <label class="" for="product-quantity">Product Quantity</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <input required class="form-control" type="text" name="quantity-unit"
-                                                id="quantity-unit">
-                                            <label class="" for="quantity-unit">Quantity Unit</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <input required class="form-control" type="date" name="product-expiry"
-                                                id="product-expiry" placeholder="$0.00">
-                                            <label class="" for="product-expiry">Expiry Date(Leave Empty if
-                                                none)</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-floating">
-                                            <select id="product-supplier" required class="form-select" aria-label="Default select example">
-                                                <option value="" disabled selected>Select a Supplier</option>
+                                            <select id="product-buyer" required class="form-select" aria-label="Default select example">
+                                                <option value="" disabled selected>Select a Buyer</option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
                                             </select>
-                                            <label class="" for="product-supplier">Supplier</label>
+                                            <label class="" for="product-buyer">Supplier</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-12">
-                                        <button class="btn btn-primary" type="submit">Add Product</button>
+                                        <button class="btn btn-primary" type="submit">Add Sale</button>
                                     </div>
                                 </div>
 

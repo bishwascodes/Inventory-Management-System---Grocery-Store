@@ -33,6 +33,13 @@ let generateCategory = (category) => {
     const itemContainer = document.createElement("div");
     itemContainer.classList.add("category-item", "d-flex");
 
+    const idDiv = document.createElement("div");
+    idDiv.classList.add("id","w-10");
+    const idP = document.createElement("p");
+    idP.textContent = category.id;
+    idDiv.appendChild(idP);
+    itemContainer.appendChild(idDiv);
+    
     const titleDiv = document.createElement("div");
     titleDiv.classList.add("title","w-20");
     const titleP = document.createElement("p");
@@ -40,12 +47,6 @@ let generateCategory = (category) => {
     titleDiv.appendChild(titleP);
     itemContainer.appendChild(titleDiv);
 
-    const idDiv = document.createElement("div");
-    idDiv.classList.add("id","w-10");
-    const idP = document.createElement("p");
-    idP.textContent = category.id;
-    idDiv.appendChild(idP);
-    itemContainer.appendChild(idDiv);
 
     const descDiv = document.createElement("div");
     descDiv.classList.add("description","w-50");

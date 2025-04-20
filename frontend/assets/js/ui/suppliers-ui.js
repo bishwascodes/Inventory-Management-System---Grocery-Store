@@ -38,57 +38,38 @@ let generateSupplier = (supplier) => {
     const itemContainer = document.createElement("div");
     itemContainer.classList.add("supplier-item", "d-flex");
 
-    const idDiv = document.createElement("div");
-    idDiv.classList.add("supplier-id", "w-10");
-    const idP = document.createElement("p");
-    idP.textContent = supplier.id;
-    idDiv.appendChild(idP);
-    itemContainer.appendChild(idDiv);
 
     const nameDiv = document.createElement("div");
-    nameDiv.classList.add("supplier-name", "w-10");
+    nameDiv.classList.add("supplier-name", "w-20");
     const nameP = document.createElement("p");
     nameP.textContent = supplier.name;
     nameDiv.appendChild(nameP);
     itemContainer.appendChild(nameDiv);
 
     const contactPersonDiv = document.createElement("div");
-    contactPersonDiv.classList.add("contact-person", "w-10");
+    contactPersonDiv.classList.add("contact-person", "w-20");
     const contactPersonP = document.createElement("p");
     contactPersonP.textContent = supplier.contactPerson;
     contactPersonDiv.appendChild(contactPersonP);
     itemContainer.appendChild(contactPersonDiv);
 
     const phoneDiv = document.createElement("div");
-    phoneDiv.classList.add("phone", "w-10");
+    phoneDiv.classList.add("phone", "w-20");
     const phoneP = document.createElement("p");
     phoneP.textContent = supplier.phone;
     phoneDiv.appendChild(phoneP);
     itemContainer.appendChild(phoneDiv);
 
     const emailDiv = document.createElement("div");
-    emailDiv.classList.add("email", "w-20");
+    emailDiv.classList.add("email", "w-30");
     const emailP = document.createElement("p");
     emailP.textContent = supplier.email;
     emailDiv.appendChild(emailP);
     itemContainer.appendChild(emailDiv);
 
-    const addressDiv = document.createElement("div");
-    addressDiv.classList.add("address", "w-20");
-    const addressP = document.createElement("p");
-    addressP.textContent = supplier.address;
-    addressDiv.appendChild(addressP);
-    itemContainer.appendChild(addressDiv);
-
-    const productsSuppliedDiv = document.createElement("div");
-    productsSuppliedDiv.classList.add("join-date", "w-10");
-    const productsSuppliedP = document.createElement("p");
-    productsSuppliedP.textContent = supplier.productsSupplied.join(", ");
-    productsSuppliedDiv.appendChild(productsSuppliedP);
-    itemContainer.appendChild(productsSuppliedDiv);
 
     const actionDiv = document.createElement("div");
-    actionDiv.classList.add("action", "w-20");
+    actionDiv.classList.add("action", "w-10");
 
     const viewLink = document.createElement("a");
     viewLink.href = "#";

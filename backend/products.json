@@ -3,10 +3,10 @@
         "Id": "1",
         "Name": "Milk",
         "Category": "Dairy",
-        "Quantity": 10,
+        "Quantity": 7,
         "Unit": "Litre",
-        "SellingPrice": 2.50,
-        "PurchasePrice": 2.00,
+        "SellingPrice": 2.5,
+        "PurchasePrice": 2,
         "ExpiryDate": "2025-06-10T00:00:00",
         "Supplier": "DairyFarm Inc."
     },
@@ -124,12 +124,12 @@
         "Id": "75",
         "Name": "Grapes",
         "Category": "Fruits",
-        "Quantity": 20,
+        "Quantity": 10,
         "Unit": "Lbs",
         "SellingPrice": 21,
         "PurchasePrice": 15,
         "ExpiryDate": "2025-04-16T00:00:00",
-        "Supplier": "2"
+        "Supplier": "Bishwas LLC"
     },
     {
         "Id": "76",
@@ -164,6 +164,4 @@
         "ExpiryDate": "2025-04-16T00:00:00",
         "Supplier": "DairyFarm Inc."
     }
-    
-
 ]

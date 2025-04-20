@@ -1,4 +1,4 @@
-import { getDataFromApi } from '../service.js';
+import { getDataFromApi, deleteProductFromApi } from '../service.js';
 
 let isFilterInUse = false;
 
@@ -10,7 +10,7 @@ let categories = await getDataFromApi("categories");
 let suppliers = await getDataFromApi("suppliers");
 // Category field
 let productCat = document.getElementById("product-category");
-productCat.length = 1; 
+productCat.length = 1;
 categories.forEach(category => {
     const option = document.createElement("option");
     option.value = category.name;
@@ -20,7 +20,7 @@ categories.forEach(category => {
 
 //supplier field
 let productSupplier = document.getElementById("product-supplier");
-productSupplier.length = 1; 
+productSupplier.length = 1;
 suppliers.forEach(category => {
     const option = document.createElement("option");
     option.value = category.name;
@@ -30,7 +30,7 @@ suppliers.forEach(category => {
 
 let filterBtn = document.getElementById("filter-btn");
 let filterOptions = document.getElementById("filter-options");
-filterBtn.addEventListener("click", (e)=>{
+filterBtn.addEventListener("click", (e) => {
     filterOptions.classList.toggle("d-none");
 })
 
@@ -61,22 +61,22 @@ let filterAndSearchProducts = () => {
         const name = product.name.toLowerCase();
         const category = product.category.toLowerCase();
         const supplier = product.supplier.toLowerCase();
-    
+
         const hasSearchMatch =
             !searchVal ||
             name.includes(searchVal) ||
             category.includes(searchVal) ||
             supplier.includes(searchVal);
-    
+
         const hasCategoryMatch =
             !selectedCategory || product.category === selectedCategory;
-    
+
         const hasSupplierMatch =
             !selectedSupplier || product.supplier === selectedSupplier;
-    
+
         return hasSearchMatch && hasCategoryMatch && hasSupplierMatch;
     });
-    
+
 
     generateProductsUI(filteredProducts);
 }
@@ -131,14 +131,14 @@ let generateProduct = (product) => {
     actionDiv.classList.add("action");
 
     const viewLink = document.createElement("a");
-    viewLink.href = "#";
+    viewLink.href = `./view-product.html?id=${product.id}`;
     const viewIcon = document.createElement("i");
     viewIcon.classList.add("fa-solid", "fa-eye");
     viewLink.appendChild(viewIcon);
     actionDiv.appendChild(viewLink);
 
     const editLink = document.createElement("a");
-    editLink.href = "#";
+    editLink.href = `./edit-product.html?id=${product.id}`;
     const editIcon = document.createElement("i");
     editIcon.classList.add("fa-solid", "fa-pencil");
     editLink.appendChild(editIcon);
@@ -150,6 +150,18 @@ let generateProduct = (product) => {
     deleteIcon.classList.add("fa-solid", "fa-trash");
     deleteLink.appendChild(deleteIcon);
     actionDiv.appendChild(deleteLink);
+    deleteLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let promptVal = prompt(`Confirm Deleting ${product.name}? Y/N`);
+        if (promptVal === "Y"  || promptVal === "y") {
+            const response = await deleteProductFromApi(product.id);
+            if (response.ok) {
+                alert("Product deleted successfully!");
+            } else {
+                alert("Failed to delete product.");
+            }
+        }
+    })
 
     itemContainer.appendChild(actionDiv);
 

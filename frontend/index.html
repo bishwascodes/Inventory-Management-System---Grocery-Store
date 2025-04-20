@@ -16,7 +16,7 @@
     <!-- Custom Css -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Js -->
-    <script type="module" src="./assets/js/ui.js"></script>
+    <script type="module" src="./assets/js/ui/dashboard-ui.js"></script>
 
 </head>
 
@@ -84,7 +84,7 @@
                         <section class="dashboard-main p-5">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a href="#">
+                                    <a href="./add-product.html">
                                         <div class="card card-inner p-5">
                                             <i class="fa-solid fa-plus fa-3x"></i>
                                             <h3>Add new Product</h3>
@@ -92,7 +92,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="#">
+                                    <a href="./add-purchase.html">
                                         <div class="card card-inner p-5">
                                             <i class="fa-solid fa-plus fa-3x"></i>
                                             <h3>Add new Purchase</h3>
@@ -100,7 +100,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="#">
+                                    <a href="./add-sale.html">
                                         <div class="card card-inner p-5">
                                             <i class="fa-solid fa-plus fa-3x"></i>
                                             <h3>Add new Sell</h3>
@@ -117,11 +117,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a href="#">
+                                    <a href="./products.html">
                                         <div class="card card-inner p-5">
                                             <div class="d-flex gap-4">
                                                 <div class="left">
-                                                    <h3>12</h3>
+                                                    <h3 id="totalProducts">0</h3>
                                                 </div>
                                                 <div class="right">
                                                     <h3>Total Products</h3>
@@ -131,11 +131,11 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="#">
+                                    <a href="./purchases.html">
                                         <div class="card card-inner p-5">
                                             <div class="d-flex gap-4">
                                                 <div class="left">
-                                                    <h3>21</h3>
+                                                    <h3 id="totalPurchases">0</h3>
                                                 </div>
                                                 <div class="right">
                                                     <h3>Total Purchases</h3>
@@ -145,11 +145,11 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="#">
+                                    <a href="./sales.html">
                                         <div class="card card-inner p-5">
                                             <div class="d-flex gap-4">
                                                 <div class="left">
-                                                    <h3>15</h3>
+                                                    <h3 id="totalSales">0</h3>
                                                 </div>
                                                 <div class="right">
                                                     <h3>Total Sales</h3>
@@ -158,9 +158,27 @@
                                         </div>
                                     </a>
                                 </div>
-                                
+
                             </div>
                         </section>
+                        <section id="low-stock-section" class="mb-5 p-5">
+                            <div class="section-title py-4">
+                                <h5>
+                                    Low Stock Products
+                                </h5>
+                            </div>
+                            <div id="low-stock-list" class="row g-3"></div>
+                        </section>
+
+                        <section id="expiring-soon-section" class="mb-5 p-5">
+                            <div class="section-title py-4">
+                                <h5>
+                                    Products Expiring Soon/Expired
+                                </h5>
+                            </div>
+                            <div id="expiring-soon-list" class="row g-3"></div>
+                        </section>
+
                     </div>
                 </main>
             </div>
