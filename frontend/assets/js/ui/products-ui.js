@@ -1,4 +1,24 @@
 import { getDataFromApi, deleteProductFromApi } from '../service.js';
+import { loggedInUser, checkIfUserLoggedIn } from '../domain.js';
+
+checkIfUserLoggedIn();
+
+//username 
+let userNameEle = document.getElementById("user-name");
+userNameEle.textContent = loggedInUser;
+
+//fullscreen api
+let fullScreenIcon = document.getElementById("full-screen-icon");
+fullScreenIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.target.classList.toggle("fa-maximize");
+    e.target.classList.toggle("fa-minimize");
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+})
 
 let isFilterInUse = false;
 
@@ -34,7 +54,7 @@ filterBtn.addEventListener("click", (e) => {
     filterOptions.classList.toggle("d-none");
 })
 
-let applyFilterBtn = document.getElementById("apply-filter-btn");
+let applyFilterForm = document.getElementById("filter-form");
 let resetFilterBtn = document.getElementById("reset-filter-btn");
 
 resetFilterBtn.addEventListener("click", () => {
@@ -44,7 +64,8 @@ resetFilterBtn.addEventListener("click", () => {
     filterAndSearchProducts();
 });
 
-applyFilterBtn.addEventListener("click", () => {
+applyFilterForm.addEventListener("click", (e) => {
+    e.preventDefault();
     isFilterInUse = true;
     filterAndSearchProducts();
 });
@@ -172,3 +193,10 @@ function starterUI() {
     generateProductsUI(products);
 }
 starterUI();
+
+//logout
+let logOutBtn = document.querySelector('.log-out');
+logOutBtn.addEventListener("click", e => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "/login.html";
+})

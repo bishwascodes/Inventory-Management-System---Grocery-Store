@@ -1,4 +1,24 @@
 import { getDataFromApi } from '../service.js';
+import { loggedInUser, checkIfUserLoggedIn } from '../domain.js';
+
+checkIfUserLoggedIn();
+
+//username 
+let userNameEle = document.getElementById("user-name");
+userNameEle.textContent = loggedInUser;
+
+//fullscreen api
+let fullScreenIcon = document.getElementById("full-screen-icon");
+fullScreenIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.target.classList.toggle("fa-maximize");
+    e.target.classList.toggle("fa-minimize");
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+})
 
 let customers = await getDataFromApi("customers");
 
@@ -37,7 +57,7 @@ let generatecustomer = (customer) => {
     itemContainer.classList.add("customer-item", "d-flex");
 
     const idDiv = document.createElement("div");
-    idDiv.classList.add("customer-id", "w-10");
+    idDiv.classList.add("customer-id", "w-20");
     const idP = document.createElement("p");
     idP.textContent = customer.id;
     idDiv.appendChild(idP);
@@ -58,37 +78,11 @@ let generatecustomer = (customer) => {
     itemContainer.appendChild(phoneDiv);
 
     const emailDiv = document.createElement("div");
-    emailDiv.classList.add("email", "w-30");
+    emailDiv.classList.add("email", "w-40");
     const emailP = document.createElement("p");
     emailP.textContent = customer.email;
     emailDiv.appendChild(emailP);
     itemContainer.appendChild(emailDiv);
-
-    const actionDiv = document.createElement("div");
-    actionDiv.classList.add("action", "w-20");
-
-    const viewLink = document.createElement("a");
-    viewLink.href = "#";
-    const viewIcon = document.createElement("i");
-    viewIcon.classList.add("fa-solid", "fa-eye");
-    viewLink.appendChild(viewIcon);
-    actionDiv.appendChild(viewLink);
-
-    const editLink = document.createElement("a");
-    editLink.href = "#";
-    const editIcon = document.createElement("i");
-    editIcon.classList.add("fa-solid", "fa-pencil");
-    editLink.appendChild(editIcon);
-    actionDiv.appendChild(editLink);
-
-    const deleteLink = document.createElement("a");
-    deleteLink.href = "#";
-    const deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("fa-solid", "fa-trash");
-    deleteLink.appendChild(deleteIcon);
-    actionDiv.appendChild(deleteLink);
-
-    itemContainer.appendChild(actionDiv);
 
     return itemContainer;
 }
@@ -97,3 +91,10 @@ function starterUI() {
     generatecustomersUI(customers);
 }
 starterUI();
+
+//logout
+let logOutBtn = document.querySelector('.log-out');
+logOutBtn.addEventListener("click", e => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "/login.html";
+})

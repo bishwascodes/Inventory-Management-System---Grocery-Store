@@ -1,20 +1,9 @@
 [
     {
-        "Id": "1",
-        "Name": "Milk",
-        "Category": "Dairy",
-        "Quantity": 7,
-        "Unit": "Litre",
-        "SellingPrice": 2.5,
-        "PurchasePrice": 2,
-        "ExpiryDate": "2025-06-10T00:00:00",
-        "Supplier": "DairyFarm Inc."
-    },
-    {
         "Id": "2",
         "Name": "Eggs",
         "Category": "Poultry",
-        "Quantity": 30,
+        "Quantity": 100,
         "Unit": "Dozen",
         "SellingPrice": 3.75,
         "PurchasePrice": 3.00,
@@ -67,25 +56,25 @@
     },
     {
         "Id": "7",
-        "Name": "Whole Milk",
-        "Category": "Diary",
+        "Name": "Almond Milk",
+        "Category": "Dairy",
         "Quantity": 20,
         "Unit": "Gallon",
         "SellingPrice": 34,
         "PurchasePrice": 12,
         "ExpiryDate": "2025-04-26T00:00:00",
-        "Supplier": "2"
+        "Supplier": "DairyFarm Inc."
     },
     {
         "Id": "71",
-        "Name": "Bacon",
+        "Name": "Bacon By Bishwas",
         "Category": "Meat",
         "Quantity": 20,
         "Unit": "Lbs",
         "SellingPrice": 2,
         "PurchasePrice": 1,
         "ExpiryDate": "2025-04-11T00:00:00",
-        "Supplier": "2"
+        "Supplier": "DairyFarm Inc."
     },
     {
         "Id": "72",
@@ -118,7 +107,7 @@
         "SellingPrice": 21,
         "PurchasePrice": 15,
         "ExpiryDate": "2025-04-30T00:00:00",
-        "Supplier": "2"
+        "Supplier": "Sanpete Grains Co."
     },
     {
         "Id": "75",
@@ -163,5 +152,16 @@
         "PurchasePrice": 8,
         "ExpiryDate": "2025-04-16T00:00:00",
         "Supplier": "DairyFarm Inc."
+    },
+    {
+        "Id": "79",
+        "Name": "Beef",
+        "Category": "Meat",
+        "Quantity": 100,
+        "Unit": "Lbs",
+        "SellingPrice": 12,
+        "PurchasePrice": 10,
+        "ExpiryDate": "2025-04-30T00:00:00",
+        "Supplier": "FreshEggs Co."
     }
 ]

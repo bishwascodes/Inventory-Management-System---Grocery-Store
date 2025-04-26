@@ -1,4 +1,26 @@
 import { getDataFromApi } from '../service.js';
+import { loggedInUser, checkIfUserLoggedIn } from '../domain.js';
+
+checkIfUserLoggedIn();
+
+//username 
+let userNameEle = document.getElementById("user-name");
+userNameEle.textContent = loggedInUser;
+
+//fullscreen api
+let fullScreenIcon = document.getElementById("full-screen-icon");
+fullScreenIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.target.classList.toggle("fa-maximize");
+    e.target.classList.toggle("fa-minimize");
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+})
+
+//categories
 
 let categories = await getDataFromApi("categories");
 
@@ -34,7 +56,7 @@ let generateCategory = (category) => {
     itemContainer.classList.add("category-item", "d-flex");
 
     const idDiv = document.createElement("div");
-    idDiv.classList.add("id","w-10");
+    idDiv.classList.add("id","w-20");
     const idP = document.createElement("p");
     idP.textContent = category.id;
     idDiv.appendChild(idP);
@@ -49,30 +71,12 @@ let generateCategory = (category) => {
 
 
     const descDiv = document.createElement("div");
-    descDiv.classList.add("description","w-50");
+    descDiv.classList.add("description","w-60");
     const priceP = document.createElement("p");
     priceP.textContent = category.description;
     descDiv.appendChild(priceP);
     itemContainer.appendChild(descDiv);
 
-    const actionDiv = document.createElement("div");
-    actionDiv.classList.add("action","w-20");
-
-    const editLink = document.createElement("a");
-    editLink.href = "#";
-    const editIcon = document.createElement("i");
-    editIcon.classList.add("fa-solid", "fa-pencil");
-    editLink.appendChild(editIcon);
-    actionDiv.appendChild(editLink);
-
-    const deleteLink = document.createElement("a");
-    deleteLink.href = "#";
-    const deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("fa-solid", "fa-trash");
-    deleteLink.appendChild(deleteIcon);
-    actionDiv.appendChild(deleteLink);
-
-    itemContainer.appendChild(actionDiv);
 
     return itemContainer;
 }
@@ -81,3 +85,10 @@ function starterUI(){
     generateCategoriesUI(categories);
 }
 starterUI();
+
+//logout
+let logOutBtn = document.querySelector('.log-out');
+logOutBtn.addEventListener("click", e => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "/login.html";
+})

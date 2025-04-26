@@ -1,4 +1,24 @@
 import { getDataFromApi } from '../service.js';
+import { loggedInUser, checkIfUserLoggedIn } from '../domain.js';
+
+checkIfUserLoggedIn();
+
+//username 
+let userNameEle = document.getElementById("user-name");
+userNameEle.textContent = loggedInUser;
+
+//fullscreen api
+let fullScreenIcon = document.getElementById("full-screen-icon");
+fullScreenIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.target.classList.toggle("fa-maximize");
+    e.target.classList.toggle("fa-minimize");
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+})
 
 let products = await getDataFromApi("products");
 
@@ -31,8 +51,6 @@ let searchPurchases = (e) => {
         generatepurchasesUI(filteredPurchases);
     }
 }
-
-
 let generatepurchasesUI = (purchases) => {
     purchaseRowContainer.replaceChildren("");
     purchases.forEach(element => {
@@ -68,7 +86,7 @@ let generatepurchase = (purchase) => {
     const soldDateDiv = document.createElement("div");
     soldDateDiv.classList.add("price","w-20");
     const soldDateP = document.createElement("p");
-    soldDateP.textContent = purchase.purchaseDate;
+    soldDateP.textContent = purchase.purchaseDate.split("T")[0] ;
     soldDateDiv.appendChild(soldDateP);
     itemContainer.appendChild(soldDateDiv);
 
@@ -79,34 +97,6 @@ let generatepurchase = (purchase) => {
     buyerDiv.appendChild(buyerP);
     itemContainer.appendChild(buyerDiv);
 
-    
-
-    const actionDiv = document.createElement("div");
-    actionDiv.classList.add("action","w-20");
-
-    const viewLink = document.createElement("a");
-    viewLink.href = "#";
-    const viewIcon = document.createElement("i");
-    viewIcon.classList.add("fa-solid", "fa-eye");
-    viewLink.appendChild(viewIcon);
-    actionDiv.appendChild(viewLink);
-
-    const editLink = document.createElement("a");
-    editLink.href = "#";
-    const editIcon = document.createElement("i");
-    editIcon.classList.add("fa-solid", "fa-pencil");
-    editLink.appendChild(editIcon);
-    actionDiv.appendChild(editLink);
-
-    const deleteLink = document.createElement("a");
-    deleteLink.href = "#";
-    const deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("fa-solid", "fa-trash");
-    deleteLink.appendChild(deleteIcon);
-    actionDiv.appendChild(deleteLink);
-
-    itemContainer.appendChild(actionDiv);
-
     return itemContainer;
 }
 
@@ -114,3 +104,10 @@ function starterUI() {
     generatepurchasesUI(purchases);
 }
 starterUI();
+
+//logout
+let logOutBtn = document.querySelector('.log-out');
+logOutBtn.addEventListener("click", e => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "/login.html";
+})

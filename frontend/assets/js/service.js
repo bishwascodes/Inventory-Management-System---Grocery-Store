@@ -20,6 +20,28 @@ export const deleteProductFromApi = async (id) => {
   return response;
 };
 
+export const loginUserToApi = async (user) => {
+  const response = await fetch(`${apiAddress}/user-login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+  return response;
+};
+
+
+export const sendUserToApi = async (user) => {
+  const response = await fetch(`${apiAddress}/user-signup`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+  return response;
+};
 
 export const sendProductToApi = async (product) => {
   const response = await fetch(`${apiAddress}/product`, {
@@ -41,7 +63,16 @@ export const sendSaleToApi = async (sale) => {
   });
   return response;
 };
-
+export const sendPurchaseToApi = async (purchase) => {
+  const response = await fetch(`${apiAddress}/purchase`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(purchase),
+  });
+  return response;
+};
 export const sendCategoryToApi = async (cat) => {
   const response = await fetch(`${apiAddress}/category`, {
     method: "POST",
@@ -74,3 +105,5 @@ export const sendCustomerToApi = async (customer) => {
   });
   return response;
 };
+
+

@@ -15,8 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
     <!-- Custom Css -->
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Js -->
     <script type="module" src="./assets/js/ui/dashboard-ui.js"></script>
+    <!-- AOS Js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
 
 </head>
 
@@ -65,51 +71,112 @@
             </div>
             <div class="col-md-9 g-0">
                 <main>
-                    <header class="d-flex justify-content-between align-items-center top-right-header py-5">
+                    <aside class="d-flex justify-content-between align-items-center top-right-header py-5">
                         <div class="ps-5">
                             <h2>Dashboard</h2>
+                        </div>
+                        <div class="full-screen-screen">
+                            <i id="full-screen-icon" title="Full Screen Mode" class="fa-solid fa-2x fa-maximize"></i>
                         </div>
                         <div class="user-account">
                             <div class="d-flex align-items-center gap-3 pe-5">
                                 <img src="./assets/img/user_1.png" class="img-fluid" alt="">
                                 <div>
-                                    <h5>Bishwas Thapa</h5>
+                                    <h5 id="user-name">Bishwas Thapa</h5>
                                     <p>Admin</p>
                                 </div>
-                                <i class="fa-solid fa-chevron-down"></i>
                             </div>
                         </div>
-                    </header>
+                    </aside>
                     <div class="content">
-                        <section class="dashboard-main p-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <a href="./add-product.html">
-                                        <div class="card card-inner p-5">
-                                            <i class="fa-solid fa-plus fa-3x"></i>
-                                            <h3>Add new Product</h3>
-                                        </div>
-                                    </a>
+                        <section class="dashboard-main p-5" data-aos="fade-up" data-aos-delay="100">
+                            <form action="" id="rearrange-cards-form">
+                                <div class="input-label">
+                                    <input type="checkbox" name="" id="rearrange-cards">
+                                    <label for="rearrange-cards">Re-arrange the cards</label>
                                 </div>
-                                <div class="col-md-4">
-                                    <a href="./add-purchase.html">
-                                        <div class="card card-inner p-5">
-                                            <i class="fa-solid fa-plus fa-3x"></i>
-                                            <h3>Add new Purchase</h3>
-                                        </div>
-                                    </a>
+                            </form>
+                            <aside class="card-list d-none ">
+                                <div class="d-flex flex-wrap gap-3">
+                                    <div class="card-item" id="card-product">
+                                        <a href="./add-product.html">
+                                            <div class="card card-inner p-5">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <h6>Add new Product</h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-item" id="card-purchase">
+                                        <a href="./add-purchase.html">
+                                            <div class="card card-inner p-5">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <h6>Add new Purchase</h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-item" id="card-sale">
+                                        <a href="./add-sale.html">
+                                            <div class="card card-inner p-5">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <h6>Add new Sell</h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-item" id="card-category">
+                                        <a href="./add-category.html">
+                                            <div class="card card-inner p-5">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <h6>Add new Category</h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-item" id="card-customer">
+                                        <a href="./add-customer.html">
+                                            <div class="card card-inner p-5">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <h6>Add new Customer</h6>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <a href="./add-sale.html">
-                                        <div class="card card-inner p-5">
-                                            <i class="fa-solid fa-plus fa-3x"></i>
-                                            <h3>Add new Sell</h3>
-                                        </div>
-                                    </a>
+                            </aside>
+                            <div class="render-list">
+                                <div class="d-flex gap-3 flex-wrap">
+                                    <div class="card-item">
+                                        <a href="./add-product.html">
+                                            <div class="card-inner p-5">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <h6>Add new Product</h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-item">
+                                        <a href="./add-purchase.html">
+                                            <div class="card-inner p-5">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <h6>Add new Purchase</h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-item">
+                                        <a href="./add-sale.html">
+                                            <div class="card-inner p-5">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <h6>Add new Sell</h6>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </section>
-                        <section class="statistics p-5">
+                        <section class="p-5 greetings bg-secondary" data-aos="fade-up" data-aos-delay="500">
+                            <div class="row">
+                                <h3>Welcome to LMS!</h3>
+                                <h4 id="user-greeting-name">Bishwas</h4>
+
+                            </div>
+                        </section>
+                        <section class="statistics p-5" data-aos="fade-up" data-aos-delay="750">
                             <div class="section-title py-4">
                                 <h5>
                                     Statistics
@@ -118,13 +185,13 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <a href="./products.html">
-                                        <div class="card card-inner p-5">
+                                        <div class="card card-inner bg-primary my-2 p-5">
                                             <div class="d-flex gap-4">
                                                 <div class="left">
                                                     <h3 id="totalProducts">0</h3>
                                                 </div>
                                                 <div class="right">
-                                                    <h3>Total Products</h3>
+                                                    <h4>Total Products</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -132,13 +199,13 @@
                                 </div>
                                 <div class="col-md-4">
                                     <a href="./purchases.html">
-                                        <div class="card card-inner p-5">
+                                        <div class="card card-inner bg-primary my-2 p-5">
                                             <div class="d-flex gap-4">
                                                 <div class="left">
                                                     <h3 id="totalPurchases">0</h3>
                                                 </div>
                                                 <div class="right">
-                                                    <h3>Total Purchases</h3>
+                                                    <h4>Total Purchases</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,13 +213,13 @@
                                 </div>
                                 <div class="col-md-4">
                                     <a href="./sales.html">
-                                        <div class="card card-inner p-5">
+                                        <div class="card card-inner bg-primary my-2 p-5">
                                             <div class="d-flex gap-4">
                                                 <div class="left">
                                                     <h3 id="totalSales">0</h3>
                                                 </div>
                                                 <div class="right">
-                                                    <h3>Total Sales</h3>
+                                                    <h4>Total Sales</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,26 +228,46 @@
 
                             </div>
                         </section>
-                        <section id="low-stock-section" class="mb-5 p-5">
+                        <section id="low-stock-section" data-aos="fade-up" class="bg-secondary p-5">
                             <div class="section-title py-4">
                                 <h5>
                                     Low Stock Products
                                 </h5>
                             </div>
-                            <div id="low-stock-list" class="row g-3"></div>
+                            <div id="low-stock-list" class="row g-3">
+                                Loading the data...
+                            </div>
                         </section>
 
-                        <section id="expiring-soon-section" class="mb-5 p-5">
+                        <section id="expiring-soon-section" data-aos="fade-up" class="p-5">
                             <div class="section-title py-4">
                                 <h5>
                                     Products Expiring Soon/Expired
                                 </h5>
                             </div>
-                            <div id="expiring-soon-list" class="row g-3"></div>
+                            <div id="expiring-soon-list" class="row g-3">
+                                Loading the data...
+                            </div>
+                        </section>
+
+                        <section id="video-section" data-aos="fade-up" class="p-5">
+                            <div class="section-title py-4">
+                                <h5>
+                                    How we simplify the Inventory Management
+                                </h5>
+                            </div>
+                            <article class="video">
+                                <video controls>
+                                    <source src="./assets/img/Inventory Video.mp4" type="video/mp4">
+                                </video>
+                            </article>
                         </section>
 
                     </div>
                 </main>
+                <footer class="bg-primary text-center p-4">
+                    Copyright &copy; 2025 | Bishwas Thapa | All Rights Reserved
+                </footer>
             </div>
         </div>
     </div>

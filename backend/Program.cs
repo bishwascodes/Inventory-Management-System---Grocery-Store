@@ -12,6 +12,7 @@ string sellFileName = "sell.json";
 string customersFileName = "customers.json";
 string suppliersFileName = "suppliers.json";
 string categoriesFileName = "categories.json";
+string usersFileName = "users.json";
 // Initializing the dictionary for all files
 List<Product> products = new();
 List<Purchase> purchases = new();
@@ -19,6 +20,7 @@ List<Sales> sales = new();
 List<Customer> customers = new();
 List<Supplier> suppliers = new();
 List<Category> categories = new();
+List<User> users = new();
 // Loading from file
 if (File.Exists(productsFileName))
 {
@@ -50,6 +52,11 @@ if (File.Exists(categoriesFileName))
     var json = File.ReadAllText(categoriesFileName);
     categories.AddRange(JsonSerializer.Deserialize<List<Category>>(json));
 }
+if (File.Exists(usersFileName))
+{
+    var json = File.ReadAllText(usersFileName);
+    users.AddRange(JsonSerializer.Deserialize<List<User>>(json));
+}
 
 // API Endpoints
 
@@ -61,6 +68,17 @@ app.MapGet("/purchases", () => purchases);
 app.MapGet("/customers", () => customers);
 app.MapGet("/suppliers", () => suppliers);
 app.MapGet("/categories", () => categories);
+app.MapGet("/product/{id}", (string id) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+
+    if (product != null)
+    {
+        return Results.Ok(product);
+    }
+    return Results.NotFound(new { message = "Product not found." });
+});
+
 // Post Endpoints
 app.MapPost("/product", (Product newProduct) =>
 {
@@ -79,15 +97,31 @@ app.MapPost("/product", (Product newProduct) =>
     File.WriteAllText(productsFileName, json);
 });
 
-app.MapGet("/product/{id}", (string id) =>
+app.MapPost("/user-login", (User loginAttempt) =>
 {
-    var product = products.FirstOrDefault(p => p.Id == id);
-
-    if (product != null)
+    var existingUser = users.FirstOrDefault(u => u.Id == loginAttempt.Id);
+    if (existingUser == null)
     {
-        return Results.Ok(product);
+        return Results.NotFound(new { message = "User not found." });
     }
-    return Results.NotFound(new { message = "Product not found." });
+    if (existingUser.Password != loginAttempt.Password)
+    {
+        return Results.BadRequest(new { message = "Incorrect password." });
+    }
+    return Results.Ok(new { message = "Login successful!", userName = existingUser.Name });
+});
+
+app.MapPost("/user-signup", (User newUser) =>
+{
+    var existingUser = users.FirstOrDefault(u => u.Id == newUser.Id);
+    if (existingUser != null)
+    {
+        return Results.BadRequest(new { message = "User already exists with the same ID." });
+    }
+    users.Add(newUser);
+    var json = JsonSerializer.Serialize(users);
+    File.WriteAllText(usersFileName, json);
+    return Results.Ok(newUser);
 });
 
 app.MapPost("/delete-product/{id}", (string id) =>
@@ -100,7 +134,7 @@ app.MapPost("/delete-product/{id}", (string id) =>
         var json = JsonSerializer.Serialize(products);
         File.WriteAllText(productsFileName, json);
     }
-   
+
 });
 
 app.MapPost("/category", (Category newCat) =>
@@ -126,17 +160,44 @@ app.MapPost("/customer", (Customer newCustomer) =>
 app.MapPost("/purchase", (Purchase newPurchase) =>
 {
     purchases.Add(newPurchase);
+    
+    var product = products.FirstOrDefault(p => p.Id == newPurchase.ProductId);
+    if (product != null)
+    {
+        var index = products.IndexOf(product);
+        products[index] = product with
+        {
+            Quantity = product.Quantity + newPurchase.QuantityPurchased
+        };
+        
+        var updatedProductsJson = JsonSerializer.Serialize(products);
+        File.WriteAllText(productsFileName, updatedProductsJson);
+    }
+
     var json = JsonSerializer.Serialize(purchases);
     File.WriteAllText(purchaseFileName, json);
-
 });
 app.MapPost("/sale", (Sales newSell) =>
 {
     sales.Add(newSell);
+
+    var product = products.FirstOrDefault(p => p.Id == newSell.ProductId);
+    if (product != null)
+    {
+        var index = products.IndexOf(product);
+        products[index] = product with
+        {
+            Quantity = product.Quantity - newSell.QuantitySold
+        };
+        
+        var updatedProductsJson = JsonSerializer.Serialize(products);
+        File.WriteAllText(productsFileName, updatedProductsJson);
+    }
+
     var json = JsonSerializer.Serialize(sales);
     File.WriteAllText(sellFileName, json);
-
 });
+
 
 app.Run();
 
@@ -188,5 +249,10 @@ public record Category(
     string Id,
     string Name,
     string Description
+);
+public record User(
+    string Id,
+    string Name,
+    string Password
 );
 

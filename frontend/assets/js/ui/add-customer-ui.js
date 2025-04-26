@@ -1,4 +1,24 @@
 import { getDataFromApi, sendCustomerToApi } from "../service.js";
+import { loggedInUser, checkIfUserLoggedIn } from '../domain.js';
+
+checkIfUserLoggedIn();
+
+//username 
+let userNameEle = document.getElementById("user-name");
+userNameEle.textContent = loggedInUser;
+
+//fullscreen api
+let fullScreenIcon = document.getElementById("full-screen-icon");
+fullScreenIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.target.classList.toggle("fa-maximize");
+    e.target.classList.toggle("fa-minimize");
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+})
 
 const customers = await getDataFromApi("customers");
 const addCustomerForm = document.getElementById("add-customer");
@@ -57,3 +77,10 @@ addCustomerForm.addEventListener("submit", async (e) => {
         alert("Failed to add customer.\n" + errorText);
     }
 });
+
+//logout
+let logOutBtn = document.querySelector('.log-out');
+logOutBtn.addEventListener("click", e => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "/login.html";
+})
